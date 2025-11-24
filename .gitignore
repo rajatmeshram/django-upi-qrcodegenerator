@@ -1,0 +1,45 @@
+# SQLite database
+*.sqlite3
+
+debug_toolbar/
+# Media files (if uploaded by users)
+media/
+
+# Log files
+*.log
+*.sql
+
+# JSON files (if they contain sensitive/local config)
+*.json
+
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+
+# Migrations cache (optional, since __pycache__ is already ignored)
+**/migrations/__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+# Ignore compiled Python files in specific directories (not needed if __pycache__/ is already ignored)
+
+pay/__pycache__
+
+# Local server/environment files
+*.pem
+127.0.0.1/
+.env
+db.sqlite3
+
+# IDE / Editor files
+.vscode/
+.idea/

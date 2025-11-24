@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pay Rajat 😎</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #fceabb, #f8b500);
+            font-family: 'Comic Neue', cursive;
+            text-align: center;
+            padding: 50px;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #ff4500;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        .fun-msg {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 15px 25px;
+            margin: 10px;
+            font-size: 20px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            background-color: #ff6347;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #ff4500;
+            transform: scale(1.1);
+        }
+
+        img {
+            max-width: 200px;
+            margin-top: 30px;
+            border-radius: 20px;
+            border: 3px dashed #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hey! It's Rajat 😎</h1>
+    <p>Feeling generous? 😜</p>
+    <p class="fun-msg">Click your favorite UPI app to pay me. Don’t leave me hanging!</p>
+
+    <form action="/generate/" method="POST">
+        {% csrf_token %}
+        <button name="method" value="google">Google Pay 💸</button>
+        <button name="method" value="phonepe">PhonePe 💰</button>
+        <button name="method" value="paytm">Paytm 👛</button>
+    </form>
+
+    <img src="/static/rajat_fun.jpg" alt="Rajat Fun Image">
+
+</body>
+</html>
