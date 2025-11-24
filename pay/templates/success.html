@@ -16,6 +16,7 @@
     font-family: 'Poppins', sans-serif;
     color: #333;
     text-align: center;
+    overflow: hidden;
   }
 
   h2 {
@@ -57,6 +58,8 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 10;
   }
 
   button:hover {
@@ -65,8 +68,19 @@
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
   }
 
-  a {
-    text-decoration: none;
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    top: -10px;
+    animation: drop 3s linear forwards;
+    z-index: 5;
+  }
+
+  @keyframes drop {
+    0% { top: -10px; transform: rotate(0deg); opacity: 1; }
+    100% { top: 100%; transform: rotate(360deg); opacity: 0; }
   }
 </style>
 </head>
@@ -74,7 +88,33 @@
 
 <h2>Scan & Pay</h2>
 <img src="/static/qr.png" alt="QR Code"><br><br>
-<a href="/done/"><button>I Have Paid</button></a>
+<button id="paidBtn">I Have Paid</button>
+
+<script>
+// Function to create confetti
+function launchConfetti() {
+    for(let i=0; i<50; i++){
+        let confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.backgroundColor = `hsl(${Math.random()*360}, 70%, 60%)`;
+        confetti.style.width = confetti.style.height = Math.random()*10+5+'px';
+        confetti.style.animationDuration = 2 + Math.random()*3 + 's';
+        document.body.appendChild(confetti);
+        // Remove confetti after animation
+        setTimeout(() => confetti.remove(), 3000);
+    }
+}
+
+// Handle button click
+document.getElementById('paidBtn').addEventListener('click', function() {
+    launchConfetti();
+    // Delay redirect to allow confetti animation
+    setTimeout(() => {
+        window.location.href = '/done/';
+    }, 1500);
+});
+</script>
 
 </body>
 </html>
